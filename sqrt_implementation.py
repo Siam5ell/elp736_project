@@ -101,7 +101,7 @@ print(b4.binary_to_float(b4.bin_value))  # Output: 0.0
 print(b4.binary_to_float(b4.square_root()))  # Output: 0.0
 
 
-values = np.arange(0, 10, 0.001)
+values = np.arange(0, 8190, 0.001)
 errors = []
 
 for val in values:
