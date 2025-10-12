@@ -101,7 +101,7 @@ print(b4.binary_to_float(b4.bin_value))  # Output: 0.0
 print(b4.binary_to_float(b4.square_root()))  # Output: 0.0
 
 
-values = np.arange(0, 8190, 0.001)
+values = np.arange(0, 100, 0.001)
 errors = []
 
 for val in values:
@@ -109,7 +109,7 @@ for val in values:
     b = BinaryRepresentation(float(val))
     sqrt_bin = b.binary_to_float(b.square_root())
     error = abs(sqrt_py - sqrt_bin)/sqrt_py if sqrt_py != 0 else 0
-    errors.append([sqrt_py, sqrt_bin])
+    errors.append([error])
 
 plt.plot(values, errors)
 plt.xlabel('Original Value')
