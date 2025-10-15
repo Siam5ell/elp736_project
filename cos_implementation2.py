@@ -71,12 +71,36 @@ def actual_cos(x):
     Computes the accurate value of cos(pi * x) using math.cos.
     """
     return math.cos(math.pi * x)
+
+def actual_sin(x):
+    """
+    Computes the accurate value of cos(pi * x) using math.cos.
+    """
+    return math.sin(math.pi * x)
+
+def cos_pix(x):
+    """Computes cos_pi_x for x in [-1,1] using above function"""
+    x = float(x)
+    x = ((x + 1) % 2) - 1 
+    # wraps the argument into the range [-1,1]
+    x = abs(x)
+    # since cosine is even function
+    if (0 <= x <= 0.5):
+        return cos_pi_x(x)
+    elif (0.5 <= x <= 1):
+        x = 1-x
+        return (-1)*cos_pi_x(x)    
+
+def sin_pix(x):
+    x = x - 0.5
+    return cos_pix(x)
+
 # Example usage and comparison
 import matplotlib.pyplot as plt
 
-x_vals = np.arange(0, 0.5, 0.001)
-actual_vals = [actual_cos(x) for x in x_vals]
-approx_vals = [cos_pi_x(x) for x in x_vals]
+x_vals = np.arange(-10, 10, 0.001)
+actual_vals = [actual_sin(x) for x in x_vals]
+approx_vals = [sin_pix(x) for x in x_vals]
 # print(approx_vals)
 # print(actual_vals)
 plt.plot(x_vals, actual_vals, label='actual_cos(x)')
