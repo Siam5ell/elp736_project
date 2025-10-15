@@ -1,14 +1,15 @@
 import numpy as np
 import struct
 import matplotlib.pyplot as plt
+from numpy._core.fromnumeric import partition
 
 def iter_sqrt(x: float) -> float:
     xh = 0.5 * x
     i = struct.unpack('I', struct.pack('f', x))[0]
     i = 0x5F375A86 - (i >> 1)
     y = struct.unpack('f', struct.pack('I', i))[0]
-    y = y * (1.5 - xh * y * y)
-    y = y * (1.5 - xh * y * y)
+    y = y * (1.50087896 - xh * y * y)
+    y = y * (1.50000057 - xh * y * y)
     y = y*x
     return y
 
@@ -41,4 +42,5 @@ plt.title('Relative Error (16-bit vs 64-bit)')
 plt.grid(True)
 
 plt.show()
-print(max(rel_error))
+print(max(rel_error*100))
+
